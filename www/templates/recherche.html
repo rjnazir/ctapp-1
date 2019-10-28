@@ -1,0 +1,157 @@
+<ion-view title="Recherche" id="page2">
+  <ion-nav-buttons side="right" class="has-header">
+    <button class="button button-positive icon ion-android-search"></button>
+  </ion-nav-buttons>
+  <ion-content padding="true" class="has-header">
+    <div class="card">
+      <form id="recherche-form1" class="list" ng-controller='rechercheCtrl' >
+        <label class="item item-input" id="recherche-input3" name="recherche-input3">
+          <span class="input-label">Imm. :</span>
+          <input type="text" required placeholder="Immatriculation" ng-model="IMM">
+        </label>
+        <div class="row">
+          <div class="col col-50"><ion-button ng-click="searchAction()" class="button button-positive button-block">RECHERCHER</ion-button></div>
+          <div class="col col-50"><ion-button ng-click="effacerAction()" class="button button-assertive button-block">EFFACER</ion-button></div>
+        </div>
+        <div ng-if="!!(text) && !(lastvt)" class="item item-divider item-assertive ">
+            <center>{{text}}</center>
+        </div>
+        <div ng-if="!!lastvt" >
+          <div class="item item-divider item-balanced">
+            <center>Renseignments dernière visite</center>
+          </div>
+          <div class="list">
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">Centre</span>
+              <input style="font-weight:bold;" type="text" readonly value="{{lastvt.ctr_nom}}">
+            </label>
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">N° procès-verbal</span>
+              <input style="font-weight:bold;" type="text" readonly value="{{lastvt.vst_num_pv}}">
+            </label>
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">Date visite</span>
+              <input style="font-weight:bold;" type="text" readonly value="{{lastvt.vst_created.substr(0,10) | date:'dd/MM/yyyy'}}">
+            </label>
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">Date expiration</span>
+              <input style="font-weight:bold;" type="text" readonly value="{{lastvt.vst_date_expiration | date:'dd/MM/yyyy'}}">
+            </label>
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">Type visite</span>
+              <input style="font-weight:bold;" type="text" readonly value="{{(lastvt.vst_is_contre_visite)?(lastvt.vst_is_contre_visite)==1?'Contre visite':'Première visite':''}}">
+            </label>
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">Aptitude</span>
+              <input style="font-weight:bold;" type="text" readonly value="{{(lastvt.vst_is_apte)?(lastvt.vst_is_apte)==1?'Apte':'Inapte':''}}">
+            </label>
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">Anomalies</span>
+              <textarea style="font-weight:bold;" readonly>{{lastvt.vst_anomalies}}</textarea>
+            </label>
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">Vérificateur</span>
+              <textarea style="font-weight:bold;" readonly>{{lastvt.nom_verificateur}}</textarea>
+            </label>          
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">Secrétaire</span>
+              <textarea style="font-weight:bold;" readonly>{{lastvt.usr_name}}</textarea>
+            </label> 
+          </div>
+          <div class="item item-divider item-balanced">
+            <center>Renseignments du véhicule</center>
+          </div>
+          <div class="list">
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">Immatriculation</span>
+              <input style="font-weight:bold;" type="text" readonly value="{{lastvt.cg_immatriculation}}">
+            </label>
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">Propriètaire</span>
+              <textarea style="font-weight:bold;" readonly >{{lastvt.cg_nom}} {{lastvt.cg_prenom}}</textarea>
+            </label>
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">Profession</span>
+              <input style="font-weight:bold;" type="text" readonly value="{{lastvt.cg_profession}}">
+            </label>
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">Adresse</span>
+              <textarea style="font-weight:bold;" readonly>{{lastvt.cg_adresse}}</textarea>
+            </label>
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">Commune</span>
+              <input style="font-weight:bold;" type="text" readonly value="{{lastvt.cg_commune}}">
+            </label>
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">Province</span>
+              <input style="font-weight:bold;" type="text" readonly value="{{lastvt.prv_nom}}">
+            </label>
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">Date mise en service</span>
+              <input style="font-weight:bold;" type="text" readonly value="{{lastvt.cg_mise_en_service| date:'dd/MM/yyyy'}}">
+            </label>
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">Nombre place assis</span>
+              <input style="font-weight:bold;" type="text" readonly value="{{lastvt.cg_nbr_assis}}">
+            </label>
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">Nombre place debout</span>
+              <input style="font-weight:bold;" type="text" readonly value="{{lastvt.cg_nbr_debout}}">
+            </label>
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">Marque</span>
+              <input style="font-weight:bold;" type="text" readonly value="{{lastvt.mrq_libelle}}">
+            </label>
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">Type</span>
+              <input style="font-weight:bold;" type="text" readonly value="{{lastvt.vhc_type}}">
+            </label>
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">N° série</span>
+              <input style="font-weight:bold;" type="text" readonly value="{{lastvt.vhc_num_serie}}">
+            </label>
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">N° moteur</span>
+              <input style="font-weight:bold;" type="text" readonly value="{{lastvt.vhc_num_moteur}}">
+            </label>
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">Carrosserie</span>
+              <input style="font-weight:bold;" type="text" readonly value="{{lastvt.vhc_num_moteur}}">
+            </label>
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">Puissance</span>
+              <input style="font-weight:bold;" type="text" readonly value="{{lastvt.cg_puissance_admin}} CV">
+            </label>
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">Source d'enerigie</span>
+              <input style="font-weight:bold;" type="text" readonly value="{{lastvt.sre_libelle}}">
+            </label>
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">Poid vide</span>
+              <input style="font-weight:bold;" type="text" readonly value="{{lastvt.vhc_poids_vide}}">
+            </label>
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">Charge utile</span>
+              <input style="font-weight:bold;" type="text" readonly value="{{lastvt.vhc_charge_utile}}">
+            </label>
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">Poid total</span>
+              <input style="font-weight:bold;" type="text" readonly value="{{lastvt.vhc_poids_total_charge}}">
+            </label>
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">Usage effectif</span>
+              <input style="font-weight:bold;" type="text" readonly value="{{lastvt.usg_libelle}}">
+            </label>
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">Utilisation</span>
+              <input style="font-weight:bold;" type="text" readonly value="{{lastvt.ut_libelle}}">
+            </label>
+          </div>
+        </div>
+      </form>
+    </div>
+    <!-- <div class="bar bar-footer">
+      <button class="button button-dark button-block pull-right">Copyright &#169; DGSR/DT/SIT OCT 2019</button>
+    </div> -->
+  </ion-content>
+</ion-view>
