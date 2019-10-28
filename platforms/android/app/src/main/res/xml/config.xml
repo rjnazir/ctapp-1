@@ -26,7 +26,7 @@
     </feature>
     <name>CTApp</name>
     <description>application de controle technique de la dgsr</description>
-    <author email="dgsrdtsit@gendarmerie.gov.mg" href="http://ionicframework.com/">service informatique et telecommunication</author>
+    <author email="dgsrdtsit@gendarmerie.gov.mg" href="http://dgsrmada.com/">service informatique et telecommunication</author>
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />

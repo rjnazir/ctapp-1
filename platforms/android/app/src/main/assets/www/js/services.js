@@ -7,3 +7,11 @@ angular.module('app.services', [])
 .service('BlankService', [function(){
 
 }]);
+
+/*
+  Fermeture de l'application ctapp
+*/
+/* exitApp(function(){
+  console.log('exit');
+  this.platform.exitApp();
+}); */ 
