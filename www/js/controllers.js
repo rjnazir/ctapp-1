@@ -92,6 +92,8 @@ function () {
             console.log(text);
             $scope.text = text;
         })
+        /* $scope.lastvt = $scope.lastvt;
+        $scope.IMM = $scope.IMM; */
     }
 
     $scope.effacerAction = function(){
