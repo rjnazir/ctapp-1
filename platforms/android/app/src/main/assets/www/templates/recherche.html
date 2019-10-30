@@ -1,4 +1,6 @@
+
 <ion-view title="Recherche" id="page2">
+  <!-- <ion-tabs class="tabs-striped tabs-background-dark tabs-color-energized">  -->
   <ion-nav-buttons side="right" class="has-header">
     <button class="button button-positive icon ion-android-search"></button>
   </ion-nav-buttons>
@@ -16,7 +18,21 @@
         <div ng-if="!!(text) && !(lastvt)" class="item item-divider item-assertive ">
             <center>{{text}}</center>
         </div>
-        <div ng-if="!!lastvt" >
+
+        <div ng-if="!!lastvt">
+        <div id="tabbed_box_1" class="tabbed-box">
+            <h4>Résultat de la recherche <small>Sélectioner un onglet</small></h4>
+            <div class="row">
+            <input type="button" value="Visite" onclick="javascript:ChangeOnglet_2(1, 2, 'tab_', 'content_');" class="button button-dark button-block" style="margin:1px;">
+            <input type="button" value="Véhicule" onclick="javascript:ChangeOnglet_2(2, 2, 'tab_', 'content_');" class="button button-dark button-block" style="margin:1px;">
+          </div>
+          <div class="tabbed_area">   
+              <ul class="tabs">
+                  <li><a href="javascript:ChangeOnglet_2(1, 2, 'tab_', 'content_');" id="tab_1" class="active">Visite</a></li>
+                  <li><a href="javascript:ChangeOnglet_2(2, 2, 'tab_', 'content_');" id="tab_2">Véhicule</a></li>
+              </ul>
+            </div>
+          <div class="content" id="content_1">
           <div class="item item-divider item-balanced">
             <center>Renseignments dernière visite</center>
           </div>
@@ -58,6 +74,9 @@
               <textarea style="font-weight:bold;" readonly>{{lastvt.usr_name}}</textarea>
             </label> 
           </div>
+          <br><br>
+        </div>
+        <div class="content" id="content_2">
           <div class="item item-divider item-balanced">
             <center>Renseignments du véhicule</center>
           </div>
@@ -147,12 +166,13 @@
               <input style="font-weight:bold;" type="text" readonly value="{{lastvt.ut_libelle}}">
             </label>
           </div>
+          <br><br>
         </div>
+      </div>
+      </div>
+      </div>
       </form>
     </div>
     <br><br>
-    <!-- <div class="bar bar-footer">
-      <button class="button button-dark button-block pull-right">Copyright &#169; DGSR/DT/SIT OCT 2019</button>
-    </div> -->
   </ion-content>
 </ion-view>

@@ -7,13 +7,6 @@
   <ion-content padding="true" class="has-header">
     <div class="card">
       <form id="recherche-form1" class="list" ng-controller='rechercheCtrl' >
-          <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-          <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-          <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-          <ion-tabs>
-              <ion-tab title="Recherche" [root]="">
-                  <br><br><br>
-          <!-- <ion-tabs class="tabs-striped tabs-background-dark tabs-color-energized"> -->
         <label class="item item-input" id="recherche-input3" name="recherche-input3">
           <span class="input-label">Imm. :</span>
           <input type="text" required placeholder="Immatriculation" ng-model="IMM">
@@ -21,17 +14,25 @@
         <div class="row">
           <div class="col col-50"><ion-button ng-click="searchAction()" class="button button-positive button-block">RECHERCHER</ion-button></div>
           <div class="col col-50"><ion-button ng-click="effacerAction()" class="button button-assertive button-block">EFFACER</ion-button></div>
-        </div>        
-      <br><br><br><br>
+        </div>
         <div ng-if="!!(text) && !(lastvt)" class="item item-divider item-assertive ">
             <center>{{text}}</center>
         </div>
-        </ion-tab>
-        <!-- <div style="margin-top: 100px;" class="tabs-background-positive tabs-light"> -->
-        <!-- <ion-tabs class="tabs-bottom tabs-background-dark tabs-color-energized" tabs-style="tabs-icon-bottom> -->
-        <div ng-if="!!lastvt" >            
-                <ion-tab title="Visite">
-                    <br><br><br>
+
+        <div ng-if="!!lastvt">
+        <div id="tabbed_box_1" class="tabbed-box">
+            <h4>Résultat de la recherche <small>Sélectioner un onglet</small></h4>
+            <div class="row">
+            <input type="button" value="Visite" onclick="javascript:ChangeOnglet_2(1, 2, 'tab_', 'content_');" class="button button-dark button-block" style="margin:1px;">
+            <input type="button" value="Véhicule" onclick="javascript:ChangeOnglet_2(2, 2, 'tab_', 'content_');" class="button button-dark button-block" style="margin:1px;">
+          </div>
+          <div class="tabbed_area">   
+              <ul class="tabs">
+                  <li><a href="javascript:ChangeOnglet_2(1, 2, 'tab_', 'content_');" id="tab_1" class="active">Visite</a></li>
+                  <li><a href="javascript:ChangeOnglet_2(2, 2, 'tab_', 'content_');" id="tab_2">Véhicule</a></li>
+              </ul>
+            </div>
+          <div class="content" id="content_1">
           <div class="item item-divider item-balanced">
             <center>Renseignments dernière visite</center>
           </div>
@@ -73,9 +74,9 @@
               <textarea style="font-weight:bold;" readonly>{{lastvt.usr_name}}</textarea>
             </label> 
           </div>
-        </ion-tab>
-        <ion-tab title="Véhicule">
-            <br><br><br>
+          <br><br>
+        </div>
+        <div class="content" id="content_2">
           <div class="item item-divider item-balanced">
             <center>Renseignments du véhicule</center>
           </div>
@@ -165,16 +166,13 @@
               <input style="font-weight:bold;" type="text" readonly value="{{lastvt.ut_libelle}}">
             </label>
           </div>
-        </ion-tab>
+          <br><br>
         </div>
-      </ion-tabs>
-    <!-- </div> -->
+      </div>
+      </div>
+      </div>
       </form>
     </div>
     <br><br>
-    <!-- <div class="bar bar-footer">
-      <button class="button button-dark button-block pull-right">Copyright &#169; DGSR/DT/SIT OCT 2019</button>
-    </div> -->
   </ion-content>
-<!-- </ion-tabs> -->
 </ion-view>
