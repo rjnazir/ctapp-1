@@ -2,7 +2,7 @@
 
 platform :ios, '9.0'
 
-target 'E:\autre app\CtApp\platforms\ios\MyApp' do
-	project 'E:\autre app\CtApp\platforms\ios\MyApp.xcodeproj'
+target 'E:\autre app\CtApp\platforms\ios\CTApp' do
+	project 'E:\autre app\CtApp\platforms\ios\CTApp.xcodeproj'
 
 end

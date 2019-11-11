@@ -92,6 +92,8 @@ function () {
             console.log(text);
             $scope.text = text;
         })
+        /* $scope.lastvt = $scope.lastvt;
+        $scope.IMM = $scope.IMM; */
     }
 
     $scope.effacerAction = function(){
@@ -137,6 +139,12 @@ function () {
         }
         $scope.lastvt = $scope.vtvide;
         $scope.IMM = "";
+        /* $scope.exitApp() = function(){
+            //this.platform.exitApp();
+            console.log("exit");
+            //ionic.Platform.exitApp();
+            //window.plugins.appMinimize.minimize();
+        } */
     }
 }])
    
@@ -156,6 +164,22 @@ function () {
 
 }])
 
-// .exitApp(function(){
-//     console.log('exit');
-// });
+
+.controller('menuQuitteCtrl', ['$scope', 'ionicHistory',
+    function($scope, $ionicHistory){
+        $scope.exitApp() = function(){
+            console.log('exit');
+            $ionicHistory.goBack();
+        }
+    }
+])
+
+/* .exitApp(function(){
+    console.log('exit');
+    this.platform.exitApp();
+}); */
+
+/* $scope.exitApp(function(){
+    console.log('exit');
+    this.platform.exitApp();
+}); */

@@ -45,6 +45,12 @@ allprojects {
       defaultTargetSdkVersion=28 //Integer - We ALWAYS target the latest by default
       defaultCompileSdkVersion=28 //Integer - We ALWAYS compile with the latest by default
     }
+    
+    configurations.matching { it.name == '_internal_aapt2_binary' }.all { config ->
+        config.resolutionStrategy.eachDependency { details ->
+            details.useVersion("3.5.0-alpha03-5252756")
+        }
+    }
 }
 
 task clean(type: Delete) {
