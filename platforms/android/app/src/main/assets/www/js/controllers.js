@@ -16,7 +16,8 @@ function () {
 // }])
 
 .controller('rechercheCtrl', ['$scope', '$http', function($scope, $http){
-    $scope.IMM = '';
+    $scope.POS = "";
+    $scope.IMM = "";
     $scope.lastvt = {
         cg_adresse: "",
         cg_ani: "",
@@ -57,43 +58,32 @@ function () {
         vst_num_pv: "",
         ut_libelle: ""
     };
-    
+
     $scope.searchAction = function(){
-        var jdvisite0 = 'http://localhost/controles_techniques/www/index.php/controles_techniques/one_visite/?IMM='+ $scope.IMM;
-        var rdvisite0 = $http.get(jdvisite0);
-        rdvisite0.success(function(rgtsvt, status, headers, config){
-            console.log(rgtsvt);
-            $scope.lastvt = rgtsvt[0];
-        }).error(function(text, status, headers, config){
-            text = "Vehicule sans visite technique."
-            console.log(text);
-            $scope.text = text;
-        })      
-
-        var jdvisite1 = 'http://192.168.88.254:2053/index.php/controles_techniques/one_visite/?IMM='+ $scope.IMM;
-        var rdvisite1 = $http.get(jdvisite1);
-        rdvisite1.success(function(rgtsvt, status, headers, config){
-            console.log(rgtsvt);
-            $scope.lastvt = rgtsvt[0];
-        }).error(function(text, status, headers, config){
-            text = "Vehicule sans visite technique."
-            console.log(text);
-            $scope.text = text;
-        })
-        
-
-        var jdvisite2 = 'http://154.126.79.185:2053/index.php/controles_techniques/one_visite/?IMM='+ $scope.IMM;
-        var rdvisite2 = $http.get(jdvisite2);
-        rdvisite2.success(function(rgtsvt, status, headers, config){
-            console.log(rgtsvt);
-            $scope.lastvt = rgtsvt[0];
-        }).error(function(text, status, headers, config){
-            text = "Vehicule sans visite technique."
-            console.log(text);
-            $scope.text = text;
-        })
-        /* $scope.lastvt = $scope.lastvt;
-        $scope.IMM = $scope.IMM; */
+        console.log($scope.POS);
+        if($scope.POS == false){
+            var jdvisite1 = 'http://192.168.88.254:2053/index.php/controles_techniques/one_visite/?IMM='+ $scope.IMM;
+            var rdvisite1 = $http.get(jdvisite1);
+            rdvisite1.success(function(rgtsvt, status, headers, config){
+                console.log(rgtsvt);
+                $scope.lastvt = rgtsvt[0];
+            }).error(function(text, status, headers, config){
+                text = "Vehicule sans visite technique."
+                console.log(text);
+                $scope.text = text;
+            })
+        }else{
+            var jdvisite2 = 'http://154.126.79.185:2053/index.php/controles_techniques/one_visite/?IMM='+ $scope.IMM;
+            var rdvisite2 = $http.get(jdvisite2);
+            rdvisite2.success(function(rgtsvt, status, headers, config){
+                console.log(rgtsvt);
+                $scope.lastvt = rgtsvt[0];
+            }).error(function(text, status, headers, config){
+                text = "Vehicule sans visite technique."
+                console.log(text);
+                $scope.text = text;
+            })
+        }
     }
 
     $scope.effacerAction = function(){
@@ -139,12 +129,7 @@ function () {
         }
         $scope.lastvt = $scope.vtvide;
         $scope.IMM = "";
-        /* $scope.exitApp() = function(){
-            //this.platform.exitApp();
-            console.log("exit");
-            //ionic.Platform.exitApp();
-            //window.plugins.appMinimize.minimize();
-        } */
+        $scope.POS = false;
     }
 }])
    

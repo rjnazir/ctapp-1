@@ -1,7 +1,8 @@
 {
   "name": "CtApp",
   "integrations": {
-    "cordova": {}
+    "cordova": {},
+    "capacitor": {}
   },
   "type": "ionic1",
   "watchPatterns": [
@@ -9,8 +10,5 @@
     "www/**/*",
     "!www/lib/**/*",
     "!www/**/*.map"
-  ],
-  "gulp": {
-    "enabled": false
-  }
+  ]
 }
