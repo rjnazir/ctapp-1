@@ -56,7 +56,8 @@ function () {
         vst_is_apte: "",
         vst_is_contre_visite: "",
         vst_num_pv: "",
-        ut_libelle: ""
+        ut_libelle: "",
+        gr_libelle: ""
     };
 
     $scope.searchAction = function(){
@@ -125,7 +126,8 @@ function () {
             vst_is_apte: "",
             vst_is_contre_visite: "",
             vst_num_pv: "",
-            ut_libelle: ""
+            ut_libelle: "",
+            gr_libelle
         }
         $scope.lastvt = $scope.vtvide;
         $scope.IMM = "";
